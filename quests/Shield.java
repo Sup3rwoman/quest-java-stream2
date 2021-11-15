@@ -1,5 +1,8 @@
+package quests;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Shield {
 
@@ -12,10 +15,14 @@ public class Shield {
         names.add("Leopold Fitz");
         names.add("Jemma Simmons");
 
-        // TODO 1 : map names to agents list
-        List<Agent> agents = new ArrayList<>();
+        //map names to agents list
+        //Use of a Stream in 3 stages:
+        List<Agent> agents = names.stream()                                                         //1. SOURCE: list of Strings containing the names of heroes
+                        .map(item -> new Agent(item.split(" ")[0],item.split(" ")[1])) //2. INTERMEDIATE: map - expects an argument Function - transformation of an element
+                        .collect(Collectors.toList());                                              //3. TERMINAL: collect - return result in form of a list
 
         showAgents(agents);
+
     }
 
     // don't touch anything here !
