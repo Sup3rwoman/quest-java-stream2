@@ -25,4 +25,12 @@ public class Agent {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+
+    public static Agent createAgent(String name){
+
+        String firstname = name.split(" ")[0];
+        String lastname = name.split(" ")[1];
+
+        return new Agent(firstname, lastname);
+    }
 }
